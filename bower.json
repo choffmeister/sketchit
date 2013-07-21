@@ -1,0 +1,15 @@
+{
+  "name": "sketchit",
+  "version": "0.0.0",
+  "dependencies": {
+    "requirejs": "2.1.8",
+    "d3": "3.2.7",
+    "jquery": "2.0.3",
+    "underscore": "1.4.4"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}

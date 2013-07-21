@@ -1,0 +1,17 @@
+# NPM stuff
+node_modules/
+npm_debug.log
+
+# Bower stuff
+components/
+
+# IDEA stuff
+.idea/
+
+# build target
+target/
+
+# OS specific trash
+.DS_Store
+Thumbs.db
+

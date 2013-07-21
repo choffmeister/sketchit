@@ -1,0 +1,16 @@
+doctype 5
+html
+    head
+        meta(charset="utf-8")
+        title sketchit
+        meta(name="viewport", content="width=device-width")
+        link(rel="icon", href="/favicon.ico", type="image/x-icon")
+        style(type="text/css")
+            .path {
+                fill: none;
+                stroke: black;
+                stroke-width: 1;
+            }
+        script(data-main="/src/app", src="/components/requirejs/require.js", async)
+    body
+        div#canvas(style="position: fixed; left: 0; top: 0; right: 0; bottom: 0;")
