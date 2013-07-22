@@ -28,7 +28,7 @@ draw = (svg, current) ->
     .attr("d", lineTemplate(current.points))
     .attr("class", "path")
 
-requirejs ["jquery", "d3"], ($, d3) ->
+requirejs ["jquery", "d3", "underscore", "Vector2", "douglaspeucker"], ($, d3, _, Vector2, dp) ->
   svg = d3.select("#canvas").append("svg:svg")
   resize(svg)
 
@@ -45,12 +45,14 @@ requirejs ["jquery", "d3"], ($, d3) ->
 
   $(window).mouseup (event) ->
     if event.button == 0
+      countBefore = current.points.length
+      current.points = dp(current.points, 2.5)
+      countAfter = current.points.length
+      console.log "Douglas/Peucker: #{countBefore} -> #{countAfter}"
+      draw(svg, current)
       current = null
 
   $(window).mousemove (event) ->
     if current?
-      current.points.push {
-        x: event.clientX
-        y: event.clientY
-      }
+      current.points.push(new Vector2(event.clientX, event.clientY))
       draw(svg, current)
