@@ -37,6 +37,10 @@ requirejs ["jquery", "socketio", "guid", "d3", "geo"], ($, io, guid, d3, geo) ->
       paths[data.id] =
         path: newPath
         element: newElement
+        
+  # disable right click
+  $(window).contextmenu (event) ->
+    event.preventDefault()
 
   $(window).mousedown (event) ->
     if not currentPath?
