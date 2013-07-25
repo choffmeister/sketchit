@@ -1,0 +1,15 @@
+# build results
+public/*.html
+public/**/*.html
+public/*.css
+public/**/*.css
+src/*.js
+src/**/*.js
+
+# external packages
+node_modules/
+bower_components/
+
+# OS specific trash
+.DS_Store
+Thumbs.db
