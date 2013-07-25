@@ -4,6 +4,25 @@ define ["underscore"], (_) ->
       @x = x
       @y = y
 
+    length: () =>
+      return Math.sqrt(@x * @x + @y * @y)
+
+    normalize: () =>
+      length = @length()
+      return new Vector(@x / length, @y / length)
+
+    add: (v2) =>
+      return new Vector(@x + v2.x, @y + v2.y)
+
+    subtract: (v2) =>
+      return new Vector(@x - v2.x, @y - v2.y)
+
+    multiply: (v2) =>
+      return @x * v2.x + @y * v2.y
+
+    orth: () =>
+      return new Vector(@y, -@x).normalize()
+
     @serialize: (point) ->
       return [point.x, point.y]
 

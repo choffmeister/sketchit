@@ -6,14 +6,14 @@ requirejs.config
     underscore: "../../bower_components/underscore/underscore"
     d3: "../../bower_components/d3/d3"
     guid: "./GUID"
-    geo: "./Geometry"
+    geometry: "./Geometry"
   shim:
     underscore:
       exports: "_"
     d3:
       exports: "d3"
 
-requirejs ["jquery", "socketio", "guid", "d3", "geo"], ($, io, guid, d3, geo) ->
+requirejs ["jquery", "socketio", "guid", "d3", "geometry"], ($, io, guid, d3, geo) ->
   svg = d3.select("body").append("svg:svg")
   canvas = svg.append("svg:g")
 
