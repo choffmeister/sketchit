@@ -16,9 +16,8 @@ server = http.createServer(app)
 
 socket = socketio.listen(server)
 socket.sockets.on "connection", (socket) ->
-  socket.on "mousemove", (data) ->
-    socket.emit "mousemove", data
-    socket.broadcast.emit "mousemove", data
+  socket.on "path", (data) ->
+    socket.broadcast.emit "path", data
 
 module.exports = server
 module.exports.use = () -> app.use.apply(app, arguments)
