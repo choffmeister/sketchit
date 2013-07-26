@@ -14,7 +14,7 @@ requirejs.config
       exports: "d3"
 
 requirejs ["jquery", "socketio", "guid", "d3", "geometry"], ($, io, guid, d3, geo) ->
-  svg = d3.select("body").append("svg:svg")
+  svg = d3.select("#svg-wrapper").append("svg:svg")
   canvas = svg.append("svg:g")
 
   paths = {}
