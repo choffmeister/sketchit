@@ -7,7 +7,7 @@ module.exports = (grunt) ->
         options:
           port: 3000
           hostname: "localhost"
-          server: "./server.coffee"
+          server: "src/server/server.coffee"
 
     coffee:
       dev:
