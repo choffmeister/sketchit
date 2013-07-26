@@ -4,8 +4,11 @@ define ["underscore"], (_) ->
       @x = x
       @y = y
 
+    squaredLength: () =>
+      return @x * @x + @y * @y;
+
     length: () =>
-      return Math.sqrt(@x * @x + @y * @y)
+      return Math.sqrt(@squaredLength())
 
     normalize: () =>
       length = @length()
