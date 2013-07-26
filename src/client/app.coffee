@@ -37,10 +37,20 @@ requirejs ["jquery", "socketio", "guid", "d3", "geometry"], ($, io, guid, d3, ge
       paths[data.id] =
         path: newPath
         element: newElement
-        
+
   # disable right click
   $(window).contextmenu (event) ->
     event.preventDefault()
+
+  onResize = () ->
+    width = $(window).width()
+    height = $(window).height()
+    svg
+      .attr("width", width)
+      .attr("height", height)
+
+  $(window).resize (event) -> onResize()
+  onResize()
 
   $(window).mousedown (event) ->
     if not currentPath?
