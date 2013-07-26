@@ -37,7 +37,7 @@ define ["underscore"], (_) ->
     lineTo: (endPoint) =>
       @segments.push ["L", endPoint]
 
-    quadraticBezierTo: (controlPoint, endPoint) =>
+    quadraticBezierCurveTo: (controlPoint, endPoint) =>
       @segments.push ["Q", controlPoint, endPoint]
 
     cubicBezierCurveTo: (controlPoint1, controlPoint2, endPoint) =>
