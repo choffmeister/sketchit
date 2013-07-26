@@ -20,11 +20,17 @@ define ["underscore"], (_) ->
     subtract: (v2) =>
       return new Vector(@x - v2.x, @y - v2.y)
 
-    multiply: (v2) =>
+    dot: (v2) =>
       return @x * v2.x + @y * v2.y
+
+    scale: (alpha) =>
+      return new Vector(@x * alpha, @y * alpha)
 
     orth: () =>
       return new Vector(@y, -@x).normalize()
+
+    clone: () =>
+      return Vector.deserialize(Vector.serialize(this))
 
     @serialize: (point) ->
       return [point.x, point.y]
@@ -53,6 +59,9 @@ define ["underscore"], (_) ->
         for point in segment[1..]
           result += "#{point.x} #{point.y} "
       return result
+
+    clone: () =>
+      return Path.deserialize(Path.serialize(this))
 
     @serialize: (path) ->
       json = _.map path.segments, (segment) ->
