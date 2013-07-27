@@ -26,6 +26,9 @@ define ["underscore"], (_) ->
     orth: () =>
       return new Vector(@y, -@x).normalize()
 
+    clone: () =>
+      return Vector.deserialize(Vector.serialize(this))
+
     @serialize: (point) ->
       return [point.x, point.y]
 
@@ -46,6 +49,19 @@ define ["underscore"], (_) ->
     cubicBezierCurveTo: (controlPoint1, controlPoint2, endPoint) =>
       @segments.push ["C", controlPoint1, controlPoint2, endPoint]
 
+    join: (nextPath) =>
+      thisLastSegment = @segments[@segments.length - 1]
+      nextFirstSegment = nextPath.segments[0]
+
+      if nextFirstSegment[0] == "M" and nextFirstSegment[1].x == thisLastSegment[thisLastSegment.length - 1].x and nextFirstSegment[1].y == thisLastSegment[thisLastSegment.length - 1].y
+        newPath = this.clone()
+        newPath.segments = newPath.segments.concat(nextPath.clone().segments[1..])
+        return newPath
+      else
+        newPath = this.clone()
+        newPath.segments = newPath.segments.concat(nextPath.clone().segments[..])
+        return newPath
+
     toSvgPathString: () =>
       result = ""
       for segment in @segments
@@ -53,6 +69,9 @@ define ["underscore"], (_) ->
         for point in segment[1..]
           result += "#{point.x} #{point.y} "
       return result
+
+    clone: () =>
+      return Path.deserialize(Path.serialize(this))
 
     @serialize: (path) ->
       json = _.map path.segments, (segment) ->
